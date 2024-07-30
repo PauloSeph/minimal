@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Person } from './models/person';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,23 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
   public http: HttpClient = inject(HttpClient);
-  public UrlApi: string = 'http://localhost:5206';
+  public urlApi: string = 'http://localhost:5206/persons';
+  public persons: Person[] = []
+
+  public getAllPerson(){
+    this.http.get<Person[]>(this.urlApi).subscribe(
+      p => this.persons = p
+    )
+  }
+
+  ngOnInit(): void {
+    this.getAllPerson()
+  }
+
+
 
   
 }

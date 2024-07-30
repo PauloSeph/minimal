@@ -20,13 +20,13 @@ namespace minimalAPIandCors
 
         public static void PersonRouteMaps(this WebApplication app)
         {
-            app.MapGet("persons", () => Persons);
+            app.MapGet("person", () => Persons);
 
-            app.MapGet("persons/{name}/{id}",
+            app.MapGet("person/{name}/{id}",
             (string name, int id) => Persons.Find(e => e.Name == name)
             );
 
-            app.MapPost("persons", ([FromBody] Person person,
+            app.MapPost("person", ([FromBody] Person person,
              HttpContext request,
             [FromQuery] string query) =>
             {
@@ -37,7 +37,7 @@ namespace minimalAPIandCors
                 return Results.Ok(request.Request.Path);
             });
 
-            app.MapPut("persons/{id:int}", (int id, Person personUpdate) =>
+            app.MapPut("person/{id:int}", (int id, Person personUpdate) =>
             {
                 var person = Persons.Find(p => p.Id == id);
 
@@ -49,7 +49,7 @@ namespace minimalAPIandCors
                 return Results.Ok(person);
             });
 
-            app.MapDelete("persons/{id:int}", (int id) =>
+            app.MapDelete("person/{id:int}", (int id) =>
             {
                 var person = Persons.Find(p => p.Id == id);
 
