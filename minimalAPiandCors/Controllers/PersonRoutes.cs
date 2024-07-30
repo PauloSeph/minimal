@@ -18,9 +18,23 @@ namespace minimalAPIandCors
 
         public static void PersonRouteMaps(this WebApplication app)
         {
-            app.MapGet("/person", () =>
-                new { Name = "test" }
+            app.MapGet("/persons", () => Persons);
+
+            app.MapGet("/persons/{name}/{id}",
+            (string name, int id) => Persons.Find(e => e.Name == name)
             );
+
+            app.MapPost("/pessoas", (Person person) => {
+
+                if (person.Id > 0 && person.Name!.Length > 0)
+                {
+                    Persons.Add(person);
+                    return Results.Ok(person);
+                } else {
+                    return Results.BadRequest();
+                }
+       
+            });
         }
     }
 }
