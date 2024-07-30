@@ -29,17 +29,17 @@ namespace minimalAPIandCors
             app.MapPost("persons", ([FromBody] Person person,
              HttpContext request,
             [FromQuery] string query) =>
-            {         
-                    Persons.Add(person);
+            {
+                Persons.Add(person);
 
-                    var name = request.Request.Query["name"];
+                var name = request.Request.Query["name"];
 
-                    return Results.Ok(request.Request.Path);
+                return Results.Ok(request.Request.Path);
             });
 
-            app.MapPut("persons/{id:int}", (int id,  Person personUpdate) =>
+            app.MapPut("persons/{id:int}", (int id, Person personUpdate) =>
             {
-                var person = Persons.Find( p => p.Id == id);
+                var person = Persons.Find(p => p.Id == id);
 
                 if (person == null)
                     return Results.NotFound();
@@ -48,6 +48,23 @@ namespace minimalAPIandCors
 
                 return Results.Ok(person);
             });
+
+            app.MapDelete("persons/{id:int}", (int id) =>
+            {
+                var person = Persons.Find(p => p.Id == id);
+
+                if (person == null)
+                    return Results.NotFound();
+
+                Persons.Remove(person);
+
+                Console.WriteLine(Persons);
+
+                return Results.Ok("Removido com sucesso!");
+            });
+
+
+
         }
     }
 }

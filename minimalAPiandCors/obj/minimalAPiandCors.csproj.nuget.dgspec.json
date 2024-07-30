@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\RepoAspNet\\minimal\\minimalAPIandCors\\minimalAPiandCors.csproj": {}
+    "C:\\RepoAspNet\\minimal\\minimalAPIandCors\\minimalAPiandCors.csproj": {}
   },
   "projects": {
-    "c:\\RepoAspNet\\minimal\\minimalAPIandCors\\minimalAPiandCors.csproj": {
+    "C:\\RepoAspNet\\minimal\\minimalAPIandCors\\minimalAPiandCors.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\RepoAspNet\\minimal\\minimalAPIandCors\\minimalAPiandCors.csproj",
+        "projectUniqueName": "C:\\RepoAspNet\\minimal\\minimalAPIandCors\\minimalAPiandCors.csproj",
         "projectName": "minimalAPiandCors",
-        "projectPath": "c:\\RepoAspNet\\minimal\\minimalAPIandCors\\minimalAPiandCors.csproj",
+        "projectPath": "C:\\RepoAspNet\\minimal\\minimalAPIandCors\\minimalAPiandCors.csproj",
         "packagesPath": "C:\\Users\\Zef\\.nuget\\packages\\",
-        "outputPath": "c:\\RepoAspNet\\minimal\\minimalAPIandCors\\obj\\",
+        "outputPath": "C:\\RepoAspNet\\minimal\\minimalAPIandCors\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Zef\\AppData\\Roaming\\NuGet\\NuGet.Config"

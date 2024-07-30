@@ -32,3 +32,9 @@ C:\RepoAspNet\minimal\minimalAPIandCors\obj\Debug\net8.0\refint\minimalAPiandCor
 C:\RepoAspNet\minimal\minimalAPIandCors\obj\Debug\net8.0\minimalAPiandCors.pdb
 C:\RepoAspNet\minimal\minimalAPIandCors\obj\Debug\net8.0\minimalAPiandCors.genruntimeconfig.cache
 C:\RepoAspNet\minimal\minimalAPIandCors\obj\Debug\net8.0\ref\minimalAPiandCors.dll
+C:\RepoAspNet\minimal\minimalAPIandCors\bin\Debug\net8.0\ConsumeApi\angular.json
+C:\RepoAspNet\minimal\minimalAPIandCors\bin\Debug\net8.0\ConsumeApi\package-lock.json
+C:\RepoAspNet\minimal\minimalAPIandCors\bin\Debug\net8.0\ConsumeApi\package.json
+C:\RepoAspNet\minimal\minimalAPIandCors\bin\Debug\net8.0\ConsumeApi\tsconfig.app.json
+C:\RepoAspNet\minimal\minimalAPIandCors\bin\Debug\net8.0\ConsumeApi\tsconfig.json
+C:\RepoAspNet\minimal\minimalAPIandCors\bin\Debug\net8.0\ConsumeApi\tsconfig.spec.json
