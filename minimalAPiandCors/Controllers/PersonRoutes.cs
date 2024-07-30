@@ -48,7 +48,6 @@ namespace minimalAPIandCors
 
                 return Results.Ok(person);
             });
-
             app.MapDelete("person/{id:int}", (int id) =>
             {
                 var person = Persons.Find(p => p.Id == id);

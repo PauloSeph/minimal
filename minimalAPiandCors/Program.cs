@@ -1,4 +1,5 @@
 using minimalAPIandCors;
+using minimalAPIandCors.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,10 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddCors(options => options.AddDefaultPolicy(policy => {
-    policy.AllowAnyOrigin();
-    policy.AllowAnyMethod();
-    policy.AllowAnyHeader();
+string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options => options.AddPolicy(name: MyAllowSpecificOrigins, policy =>
+{
+    policy.WithOrigins("http://localhost:4200/", "https://localhost:4200/");
 }));
 
 var app = builder.Build();
@@ -22,10 +24,32 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors();
+
 app.UseHttpsRedirection();
 app.PersonRouteMaps();
+
+app.UseCors();
+
+
 
 app.Run();
 
 
+
+
+
+
+
+
+
+
+
+
+
+// builder.Services.AddCors(options => options.AddDefaultPolicy(policy => {
+//     policy.AllowAnyOrigin();
+//     policy.AllowAnyMethod();
+//     policy.AllowAnyHeader();
+// }));
+
+// app.UseCors();
