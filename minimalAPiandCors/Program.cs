@@ -10,10 +10,23 @@ builder.Services.AddSwaggerGen();
 
 string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
-builder.Services.AddCors(options => options.AddPolicy(name: MyAllowSpecificOrigins, policy =>
+builder.Services.AddCors(
+options =>
 {
-    policy.WithOrigins("http://localhost:4200/", "https://localhost:4200/");
-}));
+    options.AddPolicy(name: MyAllowSpecificOrigins, policy =>
+    {
+        policy.WithOrigins("http://localhost:4200/", "https://localhost:4200/");
+    });
+
+    options.AddPolicy(name: "AnotherPolicy", policy => policy.WithOrigins("http://www.contoso.com").AllowAnyHeader().AllowAnyMethod());
+}
+
+
+
+
+
+
+);
 
 var app = builder.Build();
 
@@ -26,12 +39,8 @@ if (app.Environment.IsDevelopment())
 
 
 app.UseHttpsRedirection();
-app.PersonRouteMaps();
-
 app.UseCors();
-
-
-
+app.PersonRouteMaps();
 app.Run();
 
 

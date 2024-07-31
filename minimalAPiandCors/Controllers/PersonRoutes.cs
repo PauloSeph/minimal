@@ -20,7 +20,10 @@ namespace minimalAPIandCors
 
         public static void PersonRouteMaps(this WebApplication app)
         {
-            app.MapGet("person", () => Persons);
+            
+            string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+            app.MapGet("person", () => Persons).RequireCors(MyAllowSpecificOrigins);
 
             app.MapGet("person/{name}/{id}",
             (string name, int id) => Persons.Find(e => e.Name == name)
@@ -48,6 +51,7 @@ namespace minimalAPIandCors
 
                 return Results.Ok(person);
             });
+
             app.MapDelete("person/{id:int}", (int id) =>
             {
                 var person = Persons.Find(p => p.Id == id);
