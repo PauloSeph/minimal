@@ -11,7 +11,7 @@ builder.Services.AddSwaggerGen();
 
 var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>();
 
-Console.WriteLine(allowedOrigins![0]);
+builder.Services.AddLogging();
 
 builder.Services.AddCors(
 options =>
@@ -35,6 +35,8 @@ if (app.Environment.IsDevelopment())
 }
 app.UseHttpsRedirection();
 app.UseCors("DefaultPolicy");
+
+app.UseMiddleware<RequestLoggingMiddleware>();
 
 app.PersonRouteMaps();
 app.Run();

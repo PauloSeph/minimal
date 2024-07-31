@@ -18,12 +18,41 @@ namespace minimalAPIandCors
             new Person {Id = 4, Name = "Natalia"}
         ];
 
+        // inicializar essa lista.
+        private static List<Person> _persons = GenerateSamplePersons();
+
+
+        // metodo para retornar uma lista de artigos
+        public static List<Person> GenerateSamplePersons()
+        {
+            // generate and return sample articles
+            return new List<Person> {
+                new() { Id = 1, Name = "Pedro"},
+                new() { Id = 2, Name = "Lucas"},
+            };
+        }
+
         public static void PersonRouteMaps(this WebApplication app)
         {
-            
+
             string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
-            app.MapGet("person", () => Persons).RequireCors(MyAllowSpecificOrigins);
+
+            app.MapGet(
+                "person", 
+                ([FromQuery] int page = 1, [FromQuery] int pageSize = 10, [FromQuery] string filter = "")
+            =>
+            {
+                // esse metodo converte um IEnumerable em um IQuertAble<T> generico.
+                var query = _persons.AsQueryable(); 
+
+                if (!string.IsNullOrEmpty(filter))
+                {
+                    // query = query.Where(person => person.Name.Contains(filter) || article.)
+                }
+            })
+            .RequireCors(MyAllowSpecificOrigins);
+
 
             app.MapGet("person/{name}/{id}",
             (string name, int id) => Persons.Find(e => e.Name == name)
@@ -40,6 +69,7 @@ namespace minimalAPIandCors
                 return Results.Ok(request.Request.Path);
             });
 
+
             app.MapPut("person/{id:int}", (int id, Person personUpdate) =>
             {
                 var person = Persons.Find(p => p.Id == id);
@@ -51,6 +81,7 @@ namespace minimalAPIandCors
 
                 return Results.Ok(person);
             });
+
 
             app.MapDelete("person/{id:int}", (int id) =>
             {
